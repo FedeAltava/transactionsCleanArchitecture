@@ -1,7 +1,7 @@
-import { TransactionRepository } from "../repositories/transactionRepository";
-import { Id } from "../value objects/id";
+import { TransactionRepository } from "../repositories/TransactionRepository";
+import { Id } from "../value objects/Id";
 
-export class deleteTransactionUseCase {
+export class DeleteTransactionUseCase {
     constructor(private readonly transactionRepository: TransactionRepository) { }
 
     async execute(id: Id): Promise<void> {

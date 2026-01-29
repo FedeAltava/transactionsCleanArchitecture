@@ -1,23 +1,23 @@
 import {test,describe} from 'vitest';
-import { CreateTransactionUseCase } from '../../../domain/use cases/createTransactionUseCase';
-import { TransactionDate } from '../../../domain/value objects/transactionDate';
-import { TransactionEntity } from '../../../domain/entities/transaction';
-import { InMemoryTransactionRepository } from '../../mocks/inMemoryTransactionRepository';
+import { CreateTransactionUseCase } from '../../../domain/use-cases/CreateTransactionUseCase';
+import { InMemoryRepository } from '../../../infrastructure/repositories/InMemoryRepository';
 
 describe('CreateTransactionUseCase', () => {
     test('should create and store a new transaction', async () => {
-        const transactionRepository = new InMemoryTransactionRepository();
+        const transactionRepository = new InMemoryRepository();
         const createTransactionUseCase = new CreateTransactionUseCase(transactionRepository);
 
         const transactionData = {
+            id: undefined,
             amount: 150.75,
             transactionDate: '2023-10-05',
             description: 'Grocery shopping',
-            category: 'Food' as const
+            category: 'Food' as const,
+
         };
 
         const transaction = await createTransactionUseCase.execute(transactionData);
-
+        
         if (transaction.amount.valueOf() !== transactionData.amount) {
             throw new Error('Transaction amount does not match');
         }

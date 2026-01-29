@@ -1,7 +1,7 @@
-import { TransactionEntity } from "../entities/transaction";
-import { TransactionRepository } from "../repositories/transactionRepository";
+import { TransactionEntity } from "../entities/TransactionEntity";
+import { TransactionRepository } from "../repositories/TransactionRepository";
 
-export class getAllTransactionsUseCase {
+export class GetAllTransactionsUseCase {
     constructor(private readonly transactionRepository: TransactionRepository) { }
     
     async execute(): Promise<TransactionEntity[]> {

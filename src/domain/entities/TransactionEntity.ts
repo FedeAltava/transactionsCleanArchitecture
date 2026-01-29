@@ -1,8 +1,8 @@
-import { Category, CategoryType } from "../value objects/category";
-import { Description } from "../value objects/description";
-import { Id } from "../value objects/id";
-import { TransactionDate } from "../value objects/transactionDate";
-import { Amount } from "../value objects/amount";
+import { Category, CategoryType } from "../value objects/Category";
+import { Description } from "../value objects/Description";
+import { Id } from "../value objects/Id";
+import { TransactionDate } from "../value objects/TransactionDate";
+import { Amount } from "../value objects/Amount";
 
 export interface TransactionDataObject {
     amount: number;
@@ -20,14 +20,14 @@ export interface TransactionParams extends TransactionDataObject {
 }
 
 export class TransactionEntity {
-    constructor(readonly id: Id, readonly amount: Amount, readonly date: TransactionDate, readonly description: Description, readonly category: Category) { }
+    constructor(readonly id: Id, readonly amount: Amount, readonly transactionDate: TransactionDate, readonly description: Description, readonly category: Category) { }
 
-    toJson(): TransactionJSON {
+    toJSON(): TransactionJSON {
 
         return {
             id: this.id.valueOf(),
             amount: this.amount.valueOf(),
-            transactionDate: this.date.valueOf(),
+            transactionDate: this.transactionDate.valueOf(),
             description: this.description.valueOf(),
             category: this.category.valueOf()
         };
@@ -49,7 +49,7 @@ export class TransactionEntity {
         return TransactionEntity.create({
             id: this.id.valueOf(),
             amount: amount ? amount : this.amount.valueOf(),
-            transactionDate: transactionDate ? transactionDate : this.date.valueOf(),
+            transactionDate: transactionDate ? transactionDate : this.transactionDate.valueOf(),
             description: description ? description : this.description.valueOf(),
             category: category ? category : this.category.valueOf(),
         }

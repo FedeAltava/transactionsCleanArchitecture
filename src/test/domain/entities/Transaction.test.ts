@@ -1,5 +1,5 @@
 import {test, describe} from 'vitest';
-import { TransactionDate } from '../../../domain/value objects/transactionDate';
+import { TransactionDate } from '../../../domain/value objects/TransactionDate';
 
 describe('TransactionDate Value Object', () => {
     test('should create a TransactionDate with valid date', () => {

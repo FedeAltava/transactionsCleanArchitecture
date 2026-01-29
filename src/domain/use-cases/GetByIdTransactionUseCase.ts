@@ -1,8 +1,8 @@
-import { TransactionEntity } from "../entities/transaction";
-import { TransactionRepository } from "../repositories/transactionRepository";
-import { Id } from "../value objects/id";
+import { TransactionEntity } from "../entities/TransactionEntity";
+import { TransactionRepository } from "../repositories/TransactionRepository";
+import { Id } from "../value objects/Id";
 
-export class getByIdTransactionUseCase {
+export class GetByIdTransactionUseCase {
     constructor(private readonly transactionRepository: TransactionRepository) { }
 
     async execute(id: Id): Promise<TransactionEntity> {
@@ -14,6 +14,9 @@ export class getByIdTransactionUseCase {
         }
 
         const transaction = await this.transactionRepository.getById(id);
+        if (!transaction) {
+            throw new Error(`Transaction with ID ${id} not found`);
+        }
         return transaction;
     }
 }
