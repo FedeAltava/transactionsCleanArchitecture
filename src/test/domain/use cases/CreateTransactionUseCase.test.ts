@@ -21,7 +21,7 @@ describe('CreateTransactionUseCase', () => {
         if (transaction.amount.valueOf() !== transactionData.amount) {
             throw new Error('Transaction amount does not match');
         }
-        if (transaction.date.valueOf() !== transactionData.transactionDate) {
+        if (transaction.transactionDate.valueOf() !== transactionData.transactionDate) {
             throw new Error('Transaction date does not match');
         }
         if (transaction.description.valueOf() !== transactionData.description) {
@@ -31,7 +31,11 @@ describe('CreateTransactionUseCase', () => {
             throw new Error('Transaction category does not match');
         }
 
-        const storedTransaction = await transactionRepository.getById(transaction.id.valueOf());
+        const storedTransaction = await transactionRepository.getById(transaction.id);
+
+        if (!storedTransaction) {
+            throw new Error('Stored transaction not found');
+        }
 
         if (!transaction.equals(storedTransaction)) {
             throw new Error('Stored transaction does not match the created transaction');

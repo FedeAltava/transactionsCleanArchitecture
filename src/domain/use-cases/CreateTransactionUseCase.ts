@@ -4,7 +4,7 @@ import { TransactionRepository } from "../repositories/TransactionRepository";
 export class CreateTransactionUseCase {
     constructor(private readonly transactionRepository: TransactionRepository) { }
     
-    async execute({id, amount, transactionDate, description, category}: TransactionParams): Promise<void> {
+    async execute({id, amount, transactionDate, description, category}: TransactionParams): Promise<TransactionEntity> {
         if (!amount || !transactionDate || !description || !category) {
             throw new Error("Transaction data is required to create a transaction.");
         }
@@ -18,5 +18,6 @@ export class CreateTransactionUseCase {
         if (!transaction.equals(transaction)) {
             throw new Error("Created transaction does not match the input data.");
         }
+        return transaction;
     }
-}
+} 
