@@ -11,7 +11,7 @@ export class CreateTransactionUseCase {
 
         const transaction = TransactionEntity.create({id, amount, transactionDate, description, category});
 
-        await this.transactionRepository.create(transaction);
+        await this.transactionRepository.save(transaction);
         if (!transaction) {
             throw new Error("Failed to create transaction.");
         }

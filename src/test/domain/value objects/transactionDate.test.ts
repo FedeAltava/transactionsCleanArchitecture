@@ -13,10 +13,9 @@ describe("TransactionDate Value Object", () => {
     test("should throw an error when creating a TransactionDate with an invalid value", () => {
         try {
             TransactionDate.create("invalid-date");
-            throw new Error("Expected error was not thrown");
         } catch (error) {
             if (error instanceof Error) {
-                throw new Error("Incorrect error message");
+                throw new Error("Expected error for invalid date format");
             }
         }
     });

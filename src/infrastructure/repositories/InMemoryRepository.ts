@@ -7,7 +7,7 @@ export class InMemoryRepository implements TransactionRepository {
 
     constructor() { }
 
-    async create(transaction: TransactionEntity): Promise<void> {
+    async save(transaction: TransactionEntity): Promise<void> {
         try {
             if(this.transactions.find(t => t.id.equals(transaction.id))) {
                 throw new Error("Transaction with this ID already exists");
