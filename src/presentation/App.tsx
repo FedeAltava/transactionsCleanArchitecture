@@ -1,14 +1,15 @@
-
-import { useContext } from "react";
-import { DependenciesContext } from "../presentation/DependencieContext";
-
+import { Route, Routes } from "react-router";
+import { ListTransactions } from "./components/listTransactions/listTransactions";
+import { AddTransaction } from "./components/addTransaction/addTransaction";
+import './global.css';
 export const App = () => {
-    const deps = useContext(DependenciesContext);
-    console.log("Casos de uso disponibles:", deps);
+
     return (
-        <div>
-            <h1>Personal Finance Lite</h1>
-            <p>Arquitectura conectada con éxito.</p>
+        <div className="App">
+            <Routes>
+               <Route path="/" element ={<ListTransactions />}/> 
+               <Route path = "/addTransaction" element ={<AddTransaction />}/>
+            </Routes>
         </div>
-    ); 
+    )
 };
