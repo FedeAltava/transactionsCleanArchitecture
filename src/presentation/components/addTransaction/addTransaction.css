@@ -1,0 +1,13 @@
+.addTransactionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.addTransactionForm label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+}
