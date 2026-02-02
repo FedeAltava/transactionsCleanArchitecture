@@ -23,3 +23,30 @@ ul {
     list-style-type: none;
     padding: 0;
 }
+
+.transactionItem {
+    background-color: #ffffff;
+    margin: 10px 0;
+    padding: 10px 0px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.transactionValues {
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;           
+  padding: 10px;
+ 
+}
+
+.category {
+    font-style: italic;
+    background-color: #f3eeee;
+    padding: 1%;
+    border-radius: 8px;
+}
+
+.amount{
+    color: green;
+}

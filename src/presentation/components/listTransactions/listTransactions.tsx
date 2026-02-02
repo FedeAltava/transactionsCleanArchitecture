@@ -23,9 +23,24 @@ export const ListTransactions = () => {
 
                 <ul>
                     {transactions.map(transaction => (
-                        <li key={transaction.id.valueOf()}>
-                            {transaction.description.valueOf()} - ${transaction.amount.valueOf()} on {transaction.transactionDate.valueOf() } [{transaction.category.valueOf()}]
-                        </li>
+                        <div key={transaction.id.valueOf()} className="transactionItem">
+                            <li key={transaction.id.valueOf()} className="transactionValues">
+                                <div>
+                                    {transaction.description.valueOf()}
+                                </div>
+                                <div className="amount">
+                                    {transaction.amount.valueOf()}
+                                </div>
+                                <div className="category">
+                                    {transaction.category.valueOf()}
+                                </div>
+                                <div>
+                                    {transaction.transactionDate.valueOf()}
+                                </div>
+
+                            </li>
+
+                        </div>
                     ))}
                 </ul>
 
