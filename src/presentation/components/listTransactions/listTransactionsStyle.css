@@ -1,6 +1,4 @@
-.addTransactionButtonDiv{
-    text-align: right;
-}
+
 
 .addTransactionButton{
     background-color: #4CAF50;
@@ -19,4 +17,9 @@
     background-color: #09770d;
     cursor:pointer;
     transition: background-color 0.3s ease;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
 }
