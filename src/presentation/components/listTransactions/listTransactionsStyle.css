@@ -71,3 +71,16 @@ ul {
     background-color: #cc0000;
     transition: background-color 0.3s ease;
 }
+
+.bottomSection{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.totalSection {
+    font-weight: bold;
+    font-size: 18px;
+    padding-right: 10%;
+}

@@ -6,14 +6,14 @@ import { useNavigate } from "react-router-dom";
 import { Id } from "../../../domain/value objects/Id";
 
 export const ListTransactions = () => {
-const { getAllTransactionsUseCase, deleteTransactionUseCase } = useDependencies();
+    const { getAllTransactionsUseCase, deleteTransactionUseCase } = useDependencies();
     const [transactions, setTransactions] = useState<TransactionEntity[]>([]);
     const navigate = useNavigate();
 
-   
+
     const fetchTransactions = async () => {
         const allTransactions = await getAllTransactionsUseCase.execute();
-        setTransactions([...allTransactions]); 
+        setTransactions([...allTransactions]);
     };
 
     useEffect(() => {
@@ -21,12 +21,16 @@ const { getAllTransactionsUseCase, deleteTransactionUseCase } = useDependencies(
     }, [getAllTransactionsUseCase]);
 
     const handleDelete = async (id: Id) => {
-      
+
         await deleteTransactionUseCase.execute(id);
         const allTransactions = await getAllTransactionsUseCase.execute();
         setTransactions([...allTransactions]);
     }
-    
+
+    const calculateTotal = () => {
+        return transactions.reduce((total, transaction) => total + transaction.amount.valueOf(), 0);
+    };
+
     return (
         <div className="transactionsBoard">
             <h1>Personal Finance Lite</h1>
@@ -62,10 +66,13 @@ const { getAllTransactionsUseCase, deleteTransactionUseCase } = useDependencies(
                 <p>No transactions found.</p>
 
             )}
-            <div className="addTransactionButtonDiv">
-                <button className="addTransactionButton" onClick={() => navigate("/addTransaction")}>
-                    Add Transaction
-                </button>
+            <div className="bottomSection">
+                <div className="addTransactionButtonDiv">
+                    <button className="addTransactionButton" onClick={() => navigate("/addTransaction")}>
+                        Add Transaction
+                    </button>
+                </div>
+                <div className="totalSection"><p>total: {calculateTotal()}</p></div>
             </div>
         </div>
     );
