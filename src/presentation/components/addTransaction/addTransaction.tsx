@@ -8,7 +8,7 @@ export const AddTransaction = () => {
     const { createTransactionUseCase } = useDependencies();
     const navigate = useNavigate();
     const [amount, setAmount] = useState<number>(0);
-    const [description, setDescription] = useState("");
+    const [title, setTitle] = useState("");
     const [category, setCategory] = useState<CategoryType>("Transport");
 
 
@@ -21,7 +21,7 @@ export const AddTransaction = () => {
         await createTransactionUseCase.execute({
             id: crypto.randomUUID(),
             amount,
-            description,
+            title: title,
             transactionDate: dateStr,
             category,
         });
@@ -32,16 +32,15 @@ export const AddTransaction = () => {
         <form onSubmit={handleSubmit} className="addTransactionForm">
             <h2>New Transaction</h2>
             <input type="text"
-                placeholder="Description"
-                name="description"
+                placeholder="Title"
+                name="title"
                 required
-                value={description}
-                onChange={(e) => setDescription(e.target.value)} />
+                value={title}
+                onChange={(e) => setTitle(e.target.value)} />
             <input type="number"
                 placeholder="Amount"
                 name="amount"
                 required
-                min="1"
                 value={amount}
                 onChange={(e) => setAmount(Number(e.target.value))} />
             <label htmlFor="category">Category

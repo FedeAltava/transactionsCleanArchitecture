@@ -47,6 +47,27 @@ ul {
     border-radius: 8px;
 }
 
-.amount{
+.amountNegative{
+    color: red;
+}
+
+.amountPositive{
     color: green;
+}
+
+.deleteButton{
+    background-color: #ff4d4d;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.deleteButton:hover {
+    background-color: #cc0000;
+    transition: background-color 0.3s ease;
 }

@@ -38,7 +38,7 @@ export class InMemoryRepository implements TransactionRepository {
     }
 
 
-    async update({ id, amount, transactionDate, description, category }: TransactionJSON): Promise<void> {
+    async update({ id, amount, transactionDate, title: description, category }: TransactionJSON): Promise<void> {
         try {
 
             const index = this.transactions.findIndex(t => t.id.valueOf() === id);
@@ -57,7 +57,7 @@ export class InMemoryRepository implements TransactionRepository {
                 const updatedTransaction = existingTransaction.update({
                     amount,
                     transactionDate,
-                    description,
+                    title: description,
                     category
                 });
 

@@ -1,5 +1,5 @@
 import { Category, CategoryType } from "../value objects/Category";
-import { Description } from "../value objects/Description";
+import { Title } from "../value objects/Title";
 import { Id } from "../value objects/Id";
 import { TransactionDate } from "../value objects/TransactionDate";
 import { Amount } from "../value objects/Amount";
@@ -7,7 +7,7 @@ import { Amount } from "../value objects/Amount";
 export interface TransactionDataObject {
     amount: number;
     transactionDate: string;
-    description: string;
+    title: string;
     category: CategoryType;
 }
 
@@ -20,7 +20,7 @@ export interface TransactionParams extends TransactionDataObject {
 }
 
 export class TransactionEntity {
-    constructor(readonly id: Id, readonly amount: Amount, readonly transactionDate: TransactionDate, readonly description: Description, readonly category: Category) { }
+    constructor(readonly id: Id, readonly amount: Amount, readonly transactionDate: TransactionDate, readonly title: Title, readonly category: Category) { }
 
     toJSON(): TransactionJSON {
 
@@ -28,29 +28,29 @@ export class TransactionEntity {
             id: this.id.valueOf(),
             amount: this.amount.valueOf(),
             transactionDate: this.transactionDate.valueOf(),
-            description: this.description.valueOf(),
+            title: this.title.valueOf(),
             category: this.category.valueOf()
         };
     }
 
 
-    static create({ id, amount, transactionDate, description, category }: TransactionParams): TransactionEntity {
+    static create({ id, amount, transactionDate, title, category }: TransactionParams): TransactionEntity {
         return new TransactionEntity(
             id ? new Id(id) : Id.createId(),
             Amount.create(amount),
             TransactionDate.create(transactionDate),
-            Description.create(description),
+            Title.create(title),
             Category.create(category)
         );
     }
 
 
-    update({ amount, transactionDate, description, category }: Partial<TransactionParams>): TransactionEntity {
+    update({ amount, transactionDate, title, category }: Partial<TransactionParams>): TransactionEntity {
         return TransactionEntity.create({
             id: this.id.valueOf(),
             amount: amount ? amount : this.amount.valueOf(),
             transactionDate: transactionDate ? transactionDate : this.transactionDate.valueOf(),
-            description: description ? description : this.description.valueOf(),
+            title: title ? title : this.title.valueOf(),
             category: category ? category : this.category.valueOf(),
         }
         );

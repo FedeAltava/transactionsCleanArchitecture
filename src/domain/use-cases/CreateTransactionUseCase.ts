@@ -4,12 +4,12 @@ import { TransactionRepository } from "../repositories/TransactionRepository";
 export class CreateTransactionUseCase {
     constructor(private readonly transactionRepository: TransactionRepository) { }
     
-    async execute({id, amount, transactionDate, description, category}: TransactionParams): Promise<TransactionEntity> {
+    async execute({id, amount, transactionDate, title: description, category}: TransactionParams): Promise<TransactionEntity> {
         if (!amount || !transactionDate || !description || !category) {
             throw new Error("Transaction data is required to create a transaction.");
         }
 
-        const transaction = TransactionEntity.create({id, amount, transactionDate, description, category});
+        const transaction = TransactionEntity.create({id, amount, transactionDate, title: description, category});
 
         await this.transactionRepository.save(transaction);
         if (!transaction) {
