@@ -1,4 +1,4 @@
-.App{
+.App {
   margin: auto;
   width: 50%;
   border: 1px solid rgb(56, 58, 56);
@@ -6,5 +6,14 @@
   padding: 10px;
   text-align: center;
   max-width: 600px;
-  background-color: rgb(225, 220, 220);
+  background-color: rgba(225, 220, 220, 0.467);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-image: url('./assets/fondo.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
 }
